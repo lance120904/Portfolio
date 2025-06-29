@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision - Power up your creativity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-content {
+            padding: 80px 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .brand-logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .brand-logo::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #ff4757;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: -15px;
+        }
+
+        .main-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .main-subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 600px;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .cta-button {
+            background: #17a2b8;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 80px;
+        }
+
+        .cta-button:hover {
+            background: #138496;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(23, 162, 184, 0.3);
+        }
+
+        .websites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        .website-mockup {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .website-mockup:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .mockup-header {
+            height: 40px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .mockup-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27ca3f; }
+
+        .mockup-content {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .mockup-1 { background-image: url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=300&fit=crop'); }
+        .mockup-2 { background-image: url('https://images.unsplash.com/photo-1486312338219-ce68e2c6b81d?w=400&h=300&fit=crop'); }
+        .mockup-3 { background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop'); }
+        .mockup-4 { background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop'); }
+        .mockup-5 { background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop'); }
+        .mockup-6 { background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=300&fit=crop'); }
+
+        /* Floating animation for mockups */
+        .website-mockup:nth-child(1) {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+
+        .website-mockup:nth-child(2) {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .website-mockup:nth-child(3) {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        .website-mockup:nth-child(4) {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 3s;
+        }
+
+        .website-mockup:nth-child(5) {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+
+        .website-mockup:nth-child(6) {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Special positioning for scattered layout */
+        .websites-grid {
+            display: block;
+            position: relative;
+            height: 600px;
+        }
+
+        .website-mockup {
+            position: absolute;
+            width: 280px;
+        }
+
+        .website-mockup:nth-child(1) {
+            top: 0;
+            left: 50px;
+        }
+
+        .website-mockup:nth-child(2) {
+            top: 80px;
+            right: 100px;
+        }
+
+        .website-mockup:nth-child(3) {
+            top: 200px;
+            left: 0;
+        }
+
+        .website-mockup:nth-child(4) {
+            top: 300px;
+            right: 50px;
+        }
+
+        .website-mockup:nth-child(5) {
+            bottom: 100px;
+            left: 100px;
+        }
+
+        .website-mockup:nth-child(6) {
+            bottom: 0;
+            right: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .main-title {
+                font-size: 3.5rem;
+            }
+            
+            .websites-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                height: auto;
+                gap: 30px;
+            }
+            
+            .website-mockup {
+                position: relative;
+                width: 100%;
+            }
+            
+            .website-mockup:nth-child(n) {
+                top: auto;
+                left: auto;
+                right: auto;
+                bottom: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.8rem;
+            }
+            
+            .main-subtitle {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                font-size: 1rem;
+                padding: 14px 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <!-- Brand Header -->
+            <div class="brand-header">
+                <div class="brand-logo">MY PORTFOLIO</div>
+            </div>
+            
+            <!-- Main Content -->
+             <h1 class="main-title">Hello!</h1>
+            <h1 class="main-title"> Im John Michael Lance E. Hernandez</h1>
+            
+            <p class="main-subtitle">
+                Every Error is the key to success. I am a web developer with a passion for creating beautiful and functional websites. My goal is to help you bring your ideas to life with stunning designs and seamless user experiences.
+            </p>
+            
+            <button class="cta-button">sample projects</button>
+            
+            <!-- Website Mockups -->
+            <div class="websites-grid">
+                <div class="website-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                    </div>
+                    <div class="mockup-content mockup-1"></div>
+                </div>
+                
+                <div class="website-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                    </div>
+                    <div class="mockup-content mockup-2"></div>
+                </div>
+                
+                <div class="website-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                    </div>
+                    <div class="mockup-content mockup-3"></div>
+                </div>
+                
+                <div class="website-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                    </div>
+                    <div class="mockup-content mockup-4"></div>
+                </div>
+                
+                <div class="website-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                    </div>
+                    <div class="mockup-content mockup-5"></div>
+                </div>
+                
+                <div class="website-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                    </div>
+                    <div class="mockup-content mockup-6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clever-idea-crafting-hub</title>
+    <meta name="description" content="Lovable Generated Project" />
+    <meta name="author" content="Lovable" />
+
+    <meta property="og:title" content="clever-idea-crafting-hub" />
+    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Showcase</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #dbeafe 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .decorative-plant-1 {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            width: 128px;
+            height: 256px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .decorative-plant-2 {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            width: 160px;
+            height: 128px;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-content {
+            display: flex;
+            align-items: center;
+            gap: 64px;
+            padding: 64px 0;
+            min-height: 100vh;
+        }
+
+        .left-content {
+            flex: 1;
+            max-width: 512px;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 48px;
+            line-height: 1.1;
+        }
+
+        .title-highlight {
+            color: #374151;
+        }
+
+        .page-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .page-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .page-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            background: #dbeafe;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .page-card:hover .card-icon {
+            transform: scale(1.1);
+        }
+
+        .card-title {
+            color: #374151;
+            font-weight: 500;
+            font-size: 0.875rem;
+            line-height: 1.25;
+        }
+
+        .right-content {
+            flex: 1;
+            max-width: 384px;
+        }
+
+        .phone-frame {
+            background: white;
+            border-radius: 48px;
+            padding: 8px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .phone-screen {
+            background: linear-gradient(to bottom, #dbeafe, #bfdbfe);
+            border-radius: 40px;
+            padding: 32px;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .green-dot {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            background: #34d399;
+            border-radius: 50%;
+        }
+
+        .profile-image {
+            width: 128px;
+            height: 128px;
+            background: white;
+            border-radius: 24px;
+            margin: 0 auto 24px;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-content {
+            text-align: center;
+        }
+
+        .profile-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .profile-text {
+            color: #4b5563;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-bottom: 32px;
+            padding: 0 8px;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f97316;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+                gap: 32px;
+                padding: 32px 0;
+            }
+
+            .main-title {
+                font-size: 3rem;
+            }
+
+            .page-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .page-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .decorative-plant-1,
+            .decorative-plant-2 {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative elements -->
+    <div class="decorative-plant-1">
+        <svg viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 0 Q50 20 80 0 Q90 40 60 80 Q70 120 40 160 Q30 180 20 200" fill="none" stroke="#64748b" stroke-width="2"/>
+            <path d="M30 20 Q35 25 40 20 Q45 35 35 50 Q40 65 30 80" fill="#34d399"/>
+        </svg>
+    </div>
+    
+    <div class="decorative-plant-2">
+        <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 90 Q30 60 50 90 Q70 50 90 90 Q100 70 110 90" fill="none" stroke="#34d399" stroke-width="3"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Left side - Content -->
+            <div class="left-content">
+                <h1 class="main-title">
+                   Specialties<br>
+                    <span class="title-highlight">pre-developed pages</span>
+                </h1>
+                
+                <!-- Page type grid -->
+                <div class="page-grid">
+                    <div class="page-card">
+                        <div class="card-icon">
+                            <i data-lucide="check-circle" color="#2563eb" size="32"></i>
+                        </div>
+                        <h3 class="card-title">Services</h3>
+                    </div>
+
+                    <div class="page-card">
+                        <div class="card-icon">
+                            <i data-lucide="file-text" color="#2563eb" size="32"></i>
+                        </div>
+                        <h3 class="card-title">Blog</h3>
+                    </div>
+
+                    <div class="page-card">
+                        <div class="card-icon">
+                            <i data-lucide="mouse-pointer" color="#2563eb" size="32"></i>
+                        </div>
+                        <h3 class="card-title">Calls to Action</h3>
+                    </div>
+
+                    <div class="page-card">
+                        <div class="card-icon">
+                            <i data-lucide="dollar-sign" color="#2563eb" size="32"></i>
+                        </div>
+                        <h3 class="card-title">Pricing List</h3>
+                    </div>
+
+                    <div class="page-card">
+                        <div class="card-icon">
+                            <i data-lucide="message-square" color="#2563eb" size="32"></i>
+                        </div>
+                        <h3 class="card-title">Testimonials</h3>
+                    </div>
+
+                    <div class="page-card">
+                        <div class="card-icon">
+                            <i data-lucide="users" color="#2563eb" size="32"></i>
+                        </div>
+                        <h3 class="card-title">Team Page</h3>
+                    </div>
+
+                    <div class="page-card">
+                        <div class="card-icon">
+                            <i data-lucide="camera" color="#2563eb" size="32"></i>
+                        </div>
+                        <h3 class="card-title">Gallery</h3>
+                    </div>
+
+                    <div class="page-card">
+                        <div class="card-icon">
+                            <i data-lucide="folder-open" color="#2563eb" size="32"></i>
+                        </div>
+                        <h3 class="card-title">Projects</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right side - Mobile mockup -->
+            <div class="right-content">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <!-- Decorative green dot -->
+                        <div class="green-dot"></div>
+                        
+                        <!-- Profile image -->
+                        <div class="profile-image">
+                            <img src="https://scontent.fmnl8-1.fna.fbcdn.net/v/t39.30808-6/463279483_1315265903214802_8946367710751452847_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFMrSwSz2G7ACdvDuyYPn4EN8arVZv5B5g3xqtVm_kHmHso8v8AJVfzrUxyXAIGloKgCdKpzX0LjTLwfvqRXfrz&_nc_ohc=CIvY9chEop0Q7kNvwFi2mhH&_nc_oc=Adl_eC1MUHVL4SBsViyIrEcPFDIzDoD9r94gsGzEls0J6A_LLo_movE06IzRt2NL9go&_nc_zt=23&_nc_ht=scontent.fmnl8-1.fna&_nc_gid=W8wdaH_xcR4dBn1-5AHB7g&oh=00_AfPm6XcuQwhW0bQJyrNh-a2UCFAGW7wS_6iBjy9GJOe_Sw&oe=6866A93A" alt="Profile">
+                        </div>
+                        
+                        <div class="profile-content">
+                            <h2 class="profile-title">About Me</h2>
+                            
+                            <p class="profile-text">
+                                My name is John Michael Lance E. Hernandez and food blogging is my unique website, and food is where you can find any type of all recipes.
+                                <br><br>
+                                I am always creating fresh, flavorful, and healthy recipes that I love to share and eat in my daily cuisine, every day life. My goal is to inspire you to eat seasonally, local and sustainably. I am here for you to learn and create amazing food for yourself, your family, your friends.
+                            </p>
+                            
+                            <!-- Statistics -->
+                            <div class="stats-row">
+                                <div class="stat-item">
+                                    <div class="stat-number">166</div>
+                                    <div class="stat-label">Tasty Recipes</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">350 k</div>
+                                    <div class="stat-label">Views on YouTube</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">10 679</div>
+                                    <div class="stat-label">Subscribers</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Add hover effects to cards
+        document.querySelectorAll('.page-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
